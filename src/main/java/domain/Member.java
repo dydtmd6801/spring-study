@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Member {
 
-    private String id;
+    private long id;
     private String userId;
     private String password;
     private String confirmPassword;
@@ -24,11 +24,11 @@ public class Member {
         this.regTime = regTime;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
