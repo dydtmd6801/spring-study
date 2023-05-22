@@ -18,12 +18,16 @@ public class MemberDao {
 
     JdbcTemplate jdbcTemplate;
 
+    private static final String findById = "select * from USER where = ?";
+    private static final String insert = "insert into USER (USERID, PASSWORD, NAME, NICKNAME, PHONENUMBER, EMAIL, REQTIME)";
+    private static final String insertValue = "values (?,?,?,?,?,?,?)";
+
     public MemberDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     public Member findByUserId(String findId) {
-        List<Member> result = jdbcTemplate.query("select * from USER where = ?",
+        List<Member> result = jdbcTemplate.query(findById,
                 new RowMapper<Member>() {
                     @Override
                     public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -46,9 +50,7 @@ public class MemberDao {
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                PreparedStatement pstmt = con.prepareStatement(
-                        "insert into (USERID, PASSWORD, NAME, NICKNAME, PHONENUMBER, EMAIL, REQTIME)" +
-                                "values(?,?,?,?,?,?,?)", new String[] {"ID"});
+                PreparedStatement pstmt = con.prepareStatement(insert + insertValue, new String[]{"ID"});
                 pstmt.setString(1, member.getUserId());
                 pstmt.setString(2, member.getPassword());
                 pstmt.setString(3, member.getName());
