@@ -38,7 +38,7 @@
     <h2>Spring Study Function</h2>
     <ul>
       <a href="#"><li>[로그인]</li></a>
-      <a href="#"><li>[회원가입]</li></a>
+      <a href="/regist"><li>[회원가입]</li></a>
       <a href="#"><li>[방문글 작성]</li></a>
     </ul>
   </body>
