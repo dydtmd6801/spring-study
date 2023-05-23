@@ -16,7 +16,7 @@ import java.util.List;
 
 public class MemberDao {
 
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     private static final String findById = "select * from USER where = ?";
     private static final String insert = "insert into USER (USERID, PASSWORD, NAME, NICKNAME, PHONENUMBER, EMAIL, REQTIME)";
