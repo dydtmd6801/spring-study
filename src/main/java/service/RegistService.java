@@ -24,7 +24,7 @@ public class RegistService {
     }
 
     public long insertInfo(Register register) {
-        if(register.getPassword() == register.getConfirmPassword()) {
+        if(register.getPassword().equals(register.getConfirmPassword())) {
             Member newMember = new Member(
                     register.getUserId(),
                     register.getPassword(),
@@ -36,6 +36,6 @@ public class RegistService {
             memberDao.insert(newMember);
             return newMember.getId();
         }
-        return 2;
+        return -1;
     }
 }
