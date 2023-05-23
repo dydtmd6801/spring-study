@@ -19,7 +19,7 @@ public class MemberDao {
     private JdbcTemplate jdbcTemplate;
 
     private static final String findById = "select * from USER where USERID = ?";
-    private static final String insert = "insert into USER (USERID, PASSWORD, NAME, NICKNAME, PHONENUMBER, EMAIL, REQTIME)";
+    private static final String insert = "insert into USER (USERID, PASSWORD, NAME, NICKNAME, EMAIL, PHONENUMBER, REQTIME)";
     private static final String insertValue = "values (?,?,?,?,?,?,?)";
 
     public MemberDao(DataSource dataSource) {
@@ -36,9 +36,9 @@ public class MemberDao {
                                 rs.getString("PASSWORD"),
                                 rs.getString("NAME"),
                                 rs.getString("NICKNAME"),
-                                rs.getString("PHONENUMBER"),
                                 rs.getString("EMAIL"),
-                                rs.getTimestamp("REQDATE").toLocalDateTime());
+                                rs.getString("PHONENUMBER"),
+                                rs.getTimestamp("REQTIME").toLocalDateTime());
                         return member;
                     }
                 }, findId);
@@ -55,8 +55,8 @@ public class MemberDao {
                 pstmt.setString(2, member.getPassword());
                 pstmt.setString(3, member.getName());
                 pstmt.setString(4, member.getNickName());
-                pstmt.setString(5, member.getPhoneNumber());
-                pstmt.setString(6, member.getEmail());
+                pstmt.setString(5, member.getEmail());
+                pstmt.setString(6, member.getPhoneNumber());
                 pstmt.setString(7, String.valueOf(member.getRegTime()));
                 return pstmt;
             }
