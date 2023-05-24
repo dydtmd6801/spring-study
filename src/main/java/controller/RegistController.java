@@ -2,6 +2,7 @@ package controller;
 
 import domain.Register;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +24,10 @@ public class RegistController {
     }
 
     @PostMapping
-    public String regist(Register register) {
+    public String regist(Register register, Model model) {
         long check = registService.insertInfo(register);
-        if(check == -1) {
+        model.addAttribute("check", check);
+        if(check == -1 || check == 2) {
             return "/regist/registForm";
         }
         return "../../index";

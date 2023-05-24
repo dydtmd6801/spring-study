@@ -15,16 +15,17 @@ public class RegistService {
         this.memberDao = memberDao;
     }
 
-    public int duplicateUserId(Register register) {
+    private int duplicateUserId(Register register) {
         Member member = memberDao.findByUserId(register.getUserId());
         if(member != null) {
-            throw new DuplicateRequestException("dup userId");
+            return 2;
         }
         return 1;
     }
 
     public long insertInfo(Register register) {
-        if(register.getPassword().equals(register.getConfirmPassword())) {
+        int check = duplicateUserId(register);
+        if(check == 1 && register.getPassword().equals(register.getConfirmPassword())) {
             Member newMember = new Member(
                     register.getUserId(),
                     register.getPassword(),
@@ -35,6 +36,9 @@ public class RegistService {
                     LocalDateTime.now());
             memberDao.insert(newMember);
             return newMember.getId();
+        }
+        if(check == 2) {
+            return check;
         }
         return -1;
     }

@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dydtm
@@ -13,6 +14,16 @@
 </head>
 <body>
 <div>
+    <c:if test="${check eq 2}">
+        <script>
+            window.alert("중복된 아이디입니다.");
+        </script>
+    </c:if>
+    <c:if test="${check eq -1}">
+        <script>
+            window.alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+        </script>
+    </c:if>
     <form:form modelAttribute="register">
         <div>
             <span>아이디</span><form:input path="userId" />
