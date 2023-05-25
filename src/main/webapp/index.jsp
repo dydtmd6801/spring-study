@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -38,7 +40,15 @@
     <h2>Spring Study Function</h2>
     <ul>
       <a href="#"><li>[로그인]</li></a>
-      <a href="/regist"><li>[회원가입]</li></a>
+      <c:if test="${success eq success}">
+        <script>
+          window.alert("<spring:message code="regist.done" />")
+        </script>
+        <a><li>[가입완료]</li></a>
+      </c:if>
+      <c:otherwise>
+        <a href="/regist"><li>[회원가입]</li></a>
+      </c:otherwise>
       <a href="#"><li>[방문글 작성]</li></a>
     </ul>
   </body>

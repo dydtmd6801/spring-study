@@ -30,6 +30,7 @@ public class RegistController {
         if(check == -1 || check == 2) {
             return "/regist/registForm";
         }
+        model.addAttribute("success", "success");
         return "../../index";
     }
 }
