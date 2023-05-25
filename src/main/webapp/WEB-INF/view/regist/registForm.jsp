@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: dydtm
@@ -10,43 +11,43 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>회원가입</title>
+    <title><spring:message code="regist" /></title>
 </head>
 <body>
 <div>
     <c:if test="${check eq 2}">
         <script>
-            window.alert("중복된 아이디입니다.");
+            window.alert(<spring:message code="regist.duplicate" />);
         </script>
     </c:if>
     <c:if test="${check eq -1}">
         <script>
-            window.alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            window.alert("<spring:message code="regist.notMatch" />");
         </script>
     </c:if>
     <form:form modelAttribute="register">
         <div>
-            <span>아이디</span><form:input path="userId" />
+            <span><spring:message code="id" /></span><form:input path="userId" />
         </div>
         <div>
-            <span>비밀번호</span><form:password path="password" />
+            <span><spring:message code="password" /></span><form:password path="password" />
         </div>
         <div>
-            <span>비밀번호 확인</span><form:password path="confirmPassword" />
+            <span><spring:message code="confirmPassword" /></span><form:password path="confirmPassword" />
         </div>
         <div>
-            <span>이름</span><form:input path="name" />
+            <span><spring:message code="name" /></span><form:input path="name" />
         </div>
         <div>
-            <span>별명</span><form:input path="nickName" />
+            <span><spring:message code="nickName" /></span><form:input path="nickName" />
         </div>
         <div>
-            <span>이메일</span><form:input path="email" />
+            <span><spring:message code="email" /></span><form:input path="email" />
         </div>
         <div>
-            <span>전화번호</span><form:input path="phoneNumber" />
+            <span><spring:message code="phoneNumber" /></span><form:input path="phoneNumber" />
         </div>
-        <div><input type="submit" value="회원가입"><input type="button" value="취소"></div>
+        <div><input type="submit" value="<spring:message code="regist.submit" />"><input type="button" value="<spring:message code="regist.cancel" />"></div>
     </form:form>
 </div>
 </body>
