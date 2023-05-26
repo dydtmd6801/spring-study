@@ -39,9 +39,16 @@
 <body>
 <h2>Spring Study Function</h2>
 <ul>
-    <a href="/login">
-        <li>[로그인]</li>
-    </a>
+    <c:if test="${empty authInfo}">
+        <a href="/login">
+            <li>[로그인]</li>
+        </a>
+    </c:if>
+    <c:if test="${!empty authInfo}">
+        <a>
+            <li>[로그인완료]</li>
+        </a>
+    </c:if>
     <c:if test="${success eq 'success'}">
         <script>
             window.alert("<spring:message code="regist.done" />")
