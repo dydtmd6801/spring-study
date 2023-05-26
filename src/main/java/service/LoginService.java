@@ -17,7 +17,7 @@ public class LoginService {
         if(member == null) {
             return 2;
         }
-        if(member.getPassword() != login.getPassword()) {
+        if(!member.getPassword().equals(login.getPassword())) {
             return 3;
         }
         return 1;
