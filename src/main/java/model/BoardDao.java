@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class BoardDao {
@@ -48,7 +50,7 @@ public class BoardDao {
                 pstmt.setString(1, board.getBoardTitle());
                 pstmt.setString(2, board.getBoardContent());
                 pstmt.setString(3, board.getBoardWriter());
-                pstmt.setString(4, String.valueOf(board.getWriteDate()));
+                pstmt.setString(4, String.valueOf(LocalDateTime.now()));
                 return pstmt;
             }
         }, keyHolder);

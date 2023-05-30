@@ -43,5 +43,6 @@
         </table>
     </c:otherwise>
 </c:choose>
+<input type="button" onclick="location.href='/board/insert'" value="글쓰기" />
 </body>
 </html>

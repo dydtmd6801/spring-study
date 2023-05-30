@@ -5,6 +5,7 @@ import model.BoardDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.BoardService;
 
@@ -21,6 +22,7 @@ public class BoardController {
     }
 
     @GetMapping
+    @PostMapping
     public String showBoard(Board board, Model model) {
         List<Board> result = boardService.BoardList();
         model.addAttribute("boardList", "empty");
@@ -28,5 +30,16 @@ public class BoardController {
             model.addAttribute("boardList", result);
         }
         return "board/boardList";
+    }
+
+    @GetMapping("/insert")
+    public String showBoardForm(Board board) {
+        return "board/boardForm";
+    }
+
+    @PostMapping("/insert")
+    public String insertBoard(Board board) {
+        boardService.insertBoard(board);
+        return "redirect:/board";
     }
 }

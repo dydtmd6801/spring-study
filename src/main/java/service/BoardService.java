@@ -21,4 +21,8 @@ public class BoardService {
         }
         return result;
     }
+
+    public void insertBoard(Board board) {
+        boardDao.BoardInsert(board);
+    }
 }
