@@ -62,7 +62,7 @@
             <li>[회원가입]</li>
         </a>
     </c:if>
-    <a href="#">
+    <a href="/board">
         <li>[방문글 작성]</li>
     </a>
 </ul>

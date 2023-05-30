@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dydtm
@@ -13,5 +14,13 @@
 <body>
 <h2>게시판</h2>
 <p>게시판 내용</p>
+<c:choose>
+    <c:when test="${boardList eq 'empty'}">
+        <p>게시글이 없습니다.</p>
+    </c:when>
+    <c:otherwise>
+        <p>게시글이 있습니다.</p>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

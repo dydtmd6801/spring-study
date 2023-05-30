@@ -1,10 +1,12 @@
 package config;
 
+import model.BoardDao;
 import model.MemberDao;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import service.AuthService;
+import service.BoardService;
 import service.LoginService;
 import service.RegistService;
 
@@ -32,5 +34,15 @@ public class ModelAndServiceConfig {
     @Bean
     public AuthService authService() {
         return new AuthService(memberDao());
+    }
+
+    @Bean
+    public BoardDao boardDao() {
+        return new BoardDao(dataSource);
+    }
+
+    @Bean
+    public BoardService boardService() {
+        return new BoardService(boardDao());
     }
 }
