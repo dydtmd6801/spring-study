@@ -6,13 +6,11 @@ import model.MemberDao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DaoTest {
+public class MemberDaoTest {
 
     private MemberDao memberDao;
 
