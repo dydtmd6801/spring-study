@@ -19,7 +19,28 @@
         <p>게시글이 없습니다.</p>
     </c:when>
     <c:otherwise>
-        <p>게시글이 있습니다.</p>
+        <table border="1">
+            <thead>
+            <tr>
+                <td>No.</td>
+                <td>제목</td>
+                <td>내용</td>
+                <td>날짜</td>
+                <td>글쓴이</td>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${boardList}" var="list" varStatus="status">
+                <tr>
+                    <td><c:out value="${status.count}"/></td>
+                    <td><c:out value="${list.boardTitle}"/></td>
+                    <td><c:out value="${list.boardContent}"/></td>
+                    <td><c:out value="${list.writeDate}"/></td>
+                    <td><c:out value="${list.boardWriter}"/></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </c:otherwise>
 </c:choose>
 </body>
