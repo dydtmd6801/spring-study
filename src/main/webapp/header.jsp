@@ -16,10 +16,10 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="/board">
-                게시판
+                Board
             </a>
             <a class="navbar-item">
-                Documentation
+                Preparing
             </a>
         </div>
         <div class="navbar-end">
@@ -27,10 +27,10 @@
                 <div class="buttons">
                     <c:if test="${empty authInfo}">
                         <a class="button is-light" href="/login">
-                            로그인
+                            <strong>Sign In</strong>
                         </a>
                         <a class="button is-light" href="/regist">
-                            회원가입
+                            Sign Up
                         </a>
                     </c:if>
                     <c:if test="${!empty authInfo}">

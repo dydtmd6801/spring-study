@@ -22,7 +22,7 @@
 <body>
 <jsp:include page="../../../header.jsp"/>
 
-<form:form modelAttribute="register" class="box">
+<form:form modelAttribute="register">
     <div class="field">
         <label class="label">ID</label>
         <div class="control">

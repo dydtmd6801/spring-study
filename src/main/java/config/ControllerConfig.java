@@ -1,6 +1,7 @@
 package config;
 
 import controller.BoardController;
+import controller.IndexController;
 import controller.LoginController;
 import controller.RegistController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class ControllerConfig {
     private AuthService authService;
     @Autowired
     private BoardService boardService;
+
+    @Bean
+    public IndexController indexController() {
+        return new IndexController();
+    }
 
     @Bean
     public RegistController registController() {
