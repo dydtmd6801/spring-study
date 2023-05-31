@@ -12,23 +12,40 @@
 <html>
 <head>
     <title>로그인</title>
+    <style>
+        .box{
+            width: 40%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -75%);
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h2>로그인</h2>
-<c:if test="${loginState eq 2}">
-    <script>
-        window.alert("가입되지 않은 ID 입니다.");
-    </script>
-</c:if>
-<c:if test="${loginState eq 3}">
-    <script>
-        window.alert("비밀번호가 옳지 않습니다.");
-    </script>
-</c:if>
-<form:form modelAttribute="login">
-    <spring:message code="id" /><form:input path="id" /><br>
-    <spring:message code="password" /><form:password path="password" /><br>
-    <input type="submit" value="로그인하기" /><input type="button" onclick="javascript:history.back()" value="취소" />
+<jsp:include page="../../../header.jsp"/>
+<form:form modelAttribute="login" class="box content">
+    <h2>SIGN IN</h2>
+    <div class="field">
+        <label class="label">ID</label>
+        <div class="control">
+            <form:input path="id" class="input" placeholder="ID"/>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <form:password path="password" class="input" placeholder="password"/>
+        </div>
+    </div>
+
+    <div class="field">
+        <input type="submit" class="button is-primary" value="Sign In"/>
+    </div>
 </form:form>
 </body>
 </html>
