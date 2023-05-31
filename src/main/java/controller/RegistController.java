@@ -3,10 +3,12 @@ package controller;
 import domain.Register;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.RegistService;
+import validator.RegistValidator;
 
 @RequestMapping("/regist")
 @Controller
@@ -24,7 +26,8 @@ public class RegistController {
     }
 
     @PostMapping
-    public String regist(Register register, Model model) {
+    public String regist(Register register, Model model, Errors errors) {
+        new RegistValidator().validate(register, errors);
         long check = registService.insertInfo(register);
         model.addAttribute("check", check);
         if(check == -1 || check == 2) {
