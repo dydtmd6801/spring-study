@@ -11,44 +11,78 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title><spring:message code="regist" /></title>
+    <title><spring:message code="regist"/></title>
+    <style>
+        .field {
+            width: 60%;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <c:if test="${check eq 2}">
-        <script>
-            window.alert(<spring:message code="regist.duplicate" />);
-        </script>
-    </c:if>
-    <c:if test="${check eq -1}">
-        <script>
-            window.alert("<spring:message code="regist.notMatch" />");
-        </script>
-    </c:if>
-    <form:form modelAttribute="register">
-        <div>
-            <span><spring:message code="id" /></span><form:input path="userId" />
+<jsp:include page="../../../header.jsp"/>
+
+<form:form modelAttribute="register" class="box">
+    <div class="field">
+        <label class="label">ID</label>
+        <div class="control">
+            <form:input path="userId" class="input" placeholder="ID"/>
         </div>
-        <div>
-            <span><spring:message code="password" /></span><form:password path="password" />
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+            <form:password path="password" class="input" placeholder="password"/>
         </div>
-        <div>
-            <span><spring:message code="confirmPassword" /></span><form:password path="confirmPassword" />
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <label class="label">ConfirmPassword</label>
+        <div class="control">
+            <form:password path="confirmPassword" class="input" placeholder="confirmPassword"/>
         </div>
-        <div>
-            <span><spring:message code="name" /></span><form:input path="name" />
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+            <form:password path="name" class="input" placeholder="name"/>
         </div>
-        <div>
-            <span><spring:message code="nickName" /></span><form:input path="nickName" />
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <label class="label">NickName</label>
+        <div class="control">
+            <form:password path="nickName" class="input" placeholder="NickName"/>
         </div>
-        <div>
-            <span><spring:message code="email" /></span><form:input path="email" />
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+            <form:password path="email" class="input" placeholder="email"/>
         </div>
-        <div>
-            <span><spring:message code="phoneNumber" /></span><form:input path="phoneNumber" />
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <label class="label">PhoneNumber</label>
+        <div class="control">
+            <form:password path="phoneNumber" class="input" placeholder="PhoneNumber"/>
         </div>
-        <div><input type="submit" value="<spring:message code="regist.submit" />"><input type="button" value="<spring:message code="regist.cancel" />"></div>
-    </form:form>
-</div>
+        <p class="help is-danger">This email is invalid</p>
+    </div>
+
+    <div class="field">
+        <input type="submit" class="button is-primary" value="Submit"/>
+        <input type="button" onclick="javascript:history.back()" class="button is-primary" value="Cancel"/>
+    </div>
+</form:form>
 </body>
 </html>
