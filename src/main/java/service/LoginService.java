@@ -2,6 +2,7 @@ package service;
 
 import domain.Login;
 import domain.Member;
+import exception.LoginFailException;
 import model.MemberDao;
 
 public class LoginService {
@@ -12,14 +13,14 @@ public class LoginService {
         this.memberDao = memberDao;
     }
 
-    public int checkLogin(Login login) {
+    public void checkLogin(Login login) {
         Member member = memberDao.findByUserId(login.getId());
-        if(member == null) {
-            return 2;
+        if (member == null) {
+            throw new LoginFailException();
+        } else {
+            if (!member.getPassword().equals(login.getPassword())) {
+                throw new LoginFailException();
+            }
         }
-        if(!member.getPassword().equals(login.getPassword())) {
-            return 3;
-        }
-        return 1;
     }
 }

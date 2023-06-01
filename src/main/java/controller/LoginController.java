@@ -2,13 +2,15 @@ package controller;
 
 import domain.AuthInfo;
 import domain.Login;
+import exception.LoginFailException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.AuthService;
 import service.LoginService;
+import validator.LoginValidator;
 
 import javax.servlet.http.HttpSession;
 
@@ -33,16 +35,19 @@ public class LoginController {
     }
 
     @PostMapping
-    public String postLogin(Login login, HttpSession session, Model model) {
-        int loginState = loginService.checkLogin(login);
-
-        if(loginState == 1) {
+    public String postLogin(Login login, HttpSession session, Errors errors) {
+        new LoginValidator().validate(login, errors);
+        if(errors.hasErrors()) {
+            return "login/loginForm";
+        }
+        try {
+            loginService.checkLogin(login);
             AuthInfo authInfo = authService.authenticate(login);
             session.setAttribute("authInfo", authInfo);
             return "../../index";
+        } catch (LoginFailException e) {
+            errors.rejectValue("id", "loginError");
+            return "login/loginForm";
         }
-
-        model.addAttribute("loginState", loginState);
-        return "login/loginForm";
     }
 }

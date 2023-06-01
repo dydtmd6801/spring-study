@@ -13,13 +13,14 @@
 <head>
     <title>로그인</title>
     <style>
-        .box{
+        .box {
             width: 40%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -75%);
         }
+
         h2 {
             text-align: center;
         }
@@ -34,6 +35,7 @@
         <div class="control">
             <form:input path="id" class="input" placeholder="ID"/>
         </div>
+        <form:errors path="id" class="help is-danger"/>
     </div>
 
     <div class="field">
@@ -41,6 +43,7 @@
         <div class="control">
             <form:password path="password" class="input" placeholder="password"/>
         </div>
+        <form:errors path="password" class="help is-danger"/>
     </div>
 
     <div class="field">
