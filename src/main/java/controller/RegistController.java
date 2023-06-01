@@ -1,8 +1,8 @@
 package controller;
 
 import domain.Register;
+import exception.DuplicateMemberException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,14 +26,21 @@ public class RegistController {
     }
 
     @PostMapping
-    public String regist(Register register, Model model, Errors errors) {
+    public String regist(Register register, Errors errors) {
         new RegistValidator().validate(register, errors);
-        long check = registService.insertInfo(register);
-        model.addAttribute("check", check);
-        if(check == -1 || check == 2) {
+        if(errors.hasErrors()) {
             return "/regist/registForm";
         }
-        model.addAttribute("success", "success");
-        return "../../index";
+        try {
+            if(!register.getPassword().equals(register.getConfirmPassword())){
+                errors.rejectValue("confirmPassword","notMatch");
+                return "/regist/registForm";
+            }
+            registService.insertInfo(register);
+            return "../../index";
+        } catch (DuplicateMemberException e) {
+            errors.rejectValue("userId", "duplicate");
+            return "/regist/registForm";
+        }
     }
 }

@@ -28,7 +28,7 @@
         <div class="control">
             <form:input path="userId" class="input" placeholder="ID"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="userId" class="help is-danger"/>
     </div>
 
     <div class="field">
@@ -36,7 +36,7 @@
         <div class="control">
             <form:password path="password" class="input" placeholder="password"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="password" class="help is-danger"/>
     </div>
 
     <div class="field">
@@ -44,39 +44,39 @@
         <div class="control">
             <form:password path="confirmPassword" class="input" placeholder="confirmPassword"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="confirmPassword" class="help is-danger"/>
     </div>
 
     <div class="field">
         <label class="label">Name</label>
         <div class="control">
-            <form:password path="name" class="input" placeholder="name"/>
+            <form:input path="name" class="input" placeholder="name"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="name" class="help is-danger"/>
     </div>
 
     <div class="field">
         <label class="label">NickName</label>
         <div class="control">
-            <form:password path="nickName" class="input" placeholder="NickName"/>
+            <form:input path="nickName" class="input" placeholder="NickName"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="nickName" class="help is-danger"/>
     </div>
 
     <div class="field">
         <label class="label">Email</label>
         <div class="control">
-            <form:password path="email" class="input" placeholder="email"/>
+            <form:input path="email" class="input" placeholder="email"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="email" class="help is-danger"/>
     </div>
 
     <div class="field">
         <label class="label">PhoneNumber</label>
         <div class="control">
-            <form:password path="phoneNumber" class="input" placeholder="PhoneNumber"/>
+            <form:input path="phoneNumber" class="input" placeholder="PhoneNumber"/>
         </div>
-        <p class="help is-danger">This email is invalid</p>
+        <form:errors path="phoneNumber" class="help is-danger"/>
     </div>
 
     <div class="field">

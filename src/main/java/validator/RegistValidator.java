@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class RegistValidator implements Validator {
 
-    private static final String idRegExp = "/[ㄱ-힣]/";
+    private static final String idRegExp = "^[ㄱ-ㅎ가-힣]*$";
     private Pattern pattern;
 
     public RegistValidator() {
@@ -26,11 +26,11 @@ public class RegistValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Register register = (Register) target;
         if(register.getUserId() == null || register.getUserId().trim().isEmpty()) {
-            errors.rejectValue("id", "required");
+            errors.rejectValue("userId", "required");
         } else {
             Matcher matcher = pattern.matcher(register.getUserId());
-            if(!matcher.matches()) {
-                errors.rejectValue("id","bad");
+            if(matcher.matches()) {
+                errors.rejectValue("userId","bad");
             }
         }
         ValidationUtils.rejectIfEmpty(errors, "password","required");
