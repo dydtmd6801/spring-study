@@ -1,9 +1,6 @@
 package config;
 
-import controller.BoardController;
-import controller.IndexController;
-import controller.LoginController;
-import controller.RegistController;
+import controller.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,5 +46,10 @@ public class ControllerConfig {
         BoardController controller = new BoardController();
         controller.setBoardDao(boardService);
         return controller;
+    }
+
+    @Bean
+    public MyPageController myPageController() {
+        return new MyPageController();
     }
 }
