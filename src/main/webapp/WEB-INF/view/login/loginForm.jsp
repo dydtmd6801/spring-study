@@ -13,7 +13,7 @@
 <head>
     <title>로그인</title>
     <style>
-        .box {
+        #boxContainer {
             width: 40%;
             position: absolute;
             top: 50%;
@@ -28,7 +28,7 @@
 </head>
 <body>
 <jsp:include page="../../../header.jsp"/>
-<form:form modelAttribute="login" class="box content">
+<form:form modelAttribute="login" id="boxContainer" class="box content">
     <h2>SIGN IN</h2>
     <div class="field">
         <label class="label">ID</label>

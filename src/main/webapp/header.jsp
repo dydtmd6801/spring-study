@@ -5,9 +5,14 @@
 <head>
     <title>header</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        #navi {
+            padding: 0 !important;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar is-white" role="navigation" aria-label="main navigation">
+<nav id="navi" class="navbar is-white box" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="/index">
             <img src="/static/spring_logo.png" width="112" height="28">
@@ -34,7 +39,10 @@
                         </a>
                     </c:if>
                     <c:if test="${!empty authInfo}">
-                        <p class="navbar-item">${authInfo.userId}님, 환영합니다!</p>
+                        <p class="navbar-item"><strong>${authInfo.userId}님</p></strong>
+                        <a class="button is-light" href="/myPage">
+                            <strong>My Page</strong>
+                        </a>
                     </c:if>
                 </div>
             </div>
