@@ -1,7 +1,5 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.lang.reflect.Array" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: dydtm
@@ -13,54 +11,63 @@
 <html>
 <head>
     <title>My Page</title>
+    <style>
+        .field {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="../../../header.jsp"/>
-<div class="field">
-    <label class="label">ID</label>
-    <div class="control">
+
+<form:form action="/myPage?state=modify">
+    <div class="field">
+        <label class="label">ID</label>
+        <div class="control">
+            <c:if test="${state ne 'modify'}">
+                ${authInfo.userId}
+            </c:if>
+            <c:if test="${state eq 'modify'}">
+                <input class="input" type="text" placeholder="Text input">
+            </c:if>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Name</label>
         <c:if test="${state ne 'modify'}">
-            ${authInfo.userId}
+            ${authInfo.name}
         </c:if>
         <c:if test="${state eq 'modify'}">
             <input class="input" type="text" placeholder="Text input">
         </c:if>
     </div>
-</div>
 
-<div class="field">
-    <label class="label">Name</label>
-    <c:if test="${state ne 'modify'}">
-        ${authInfo.name}
-    </c:if>
-    <c:if test="${state eq 'modify'}">
-        <input class="input" type="text" placeholder="Text input">
-    </c:if>
-</div>
-
-<div class="field">
-    <label class="label">PhoneNumber</label>
-    <c:if test="${state ne 'modify'}">
-        ${authInfo.phoneNumber}
-    </c:if>
-    <c:if test="${state eq 'modify'}">
-        <input class="input" type="text" placeholder="Text input">
-    </c:if>
-</div>
-
-<c:if test="${state ne 'modify'}">
-    <div class="field is-horizontal is-justify-content-center">
-        <input type="submit" class="button is-primary" value="Modify"/>
-        <input type="submit" class="button is-light" value="Log out"/>
+    <div class="field">
+        <label class="label">PhoneNumber</label>
+        <c:if test="${state ne 'modify'}">
+            ${authInfo.phoneNumber}
+        </c:if>
+        <c:if test="${state eq 'modify'}">
+            <input class="input" type="text" placeholder="Text input">
+        </c:if>
     </div>
-</c:if>
 
-<c:if test="${state eq 'modify'}">
-    <div class="field is-horizontal is-justify-content-center">
-        <input type="submit" class="button is-primary" value="Complete"/>
-        <input type="submit" class="button is-light" value="Cancel"/>
-    </div>
-</c:if>
+    <c:if test="${state ne 'modify'}">
+        <div class="field is-horizontal is-justify-content-center">
+            <a href="/myPage?state=modify" class="button is-primary">Modify</a>
+            <a href="#" class="button is-light">Log out</a>
+        </div>
+    </c:if>
+
+    <c:if test="${state eq 'modify'}">
+        <div class="field is-horizontal is-justify-content-center">
+            <input type="submit" class="button is-primary" value="Complete"/>
+            <input type="submit" class="button is-light" value="Cancel"/>
+        </div>
+    </c:if>
+</form:form>
 
 </body>
 </html>
