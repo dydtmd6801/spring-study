@@ -25,12 +25,7 @@
     <div class="field">
         <label class="label">ID</label>
         <div class="control">
-            <c:if test="${state ne 'modify'}">
-                ${authInfo.userId}
-            </c:if>
-            <c:if test="${state eq 'modify'}">
-                <input class="input" type="text" placeholder="Text input">
-            </c:if>
+            <c:out value="${authInfo.userId}"/>
         </div>
     </div>
 
