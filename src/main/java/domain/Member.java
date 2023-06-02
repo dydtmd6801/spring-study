@@ -63,4 +63,9 @@ public class Member {
     public LocalDateTime getRegTime() {
         return regTime;
     }
+
+    public void setNewInfo(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+    }
 }

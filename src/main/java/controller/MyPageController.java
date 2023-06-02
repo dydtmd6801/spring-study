@@ -1,6 +1,7 @@
 package controller;
 
 import domain.AuthInfo;
+import domain.ChangeInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,7 @@ import javax.servlet.http.HttpSession;
 public class MyPageController {
 
     @GetMapping
-    @PostMapping
-    public String myPage(@RequestParam String state, HttpSession session, Model model) {
+    public String myPage(@RequestParam String state, HttpSession session, Model model, ChangeInfo changeInfo) {
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
         if(authInfo == null) {
             return "redirect:/index";
@@ -26,5 +26,10 @@ public class MyPageController {
             model.addAttribute("state","modify");
         }
         return "myPage/index";
+    }
+
+    @PostMapping
+    public String changeInfo(ChangeInfo changeInfo) {
+        return "redirect:/myPage/changeInfo";
     }
 }

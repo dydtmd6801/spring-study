@@ -4,10 +4,7 @@ import controller.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import service.AuthService;
-import service.BoardService;
-import service.LoginService;
-import service.RegistService;
+import service.*;
 
 @Configuration
 public class ControllerConfig {
@@ -20,6 +17,8 @@ public class ControllerConfig {
     private AuthService authService;
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private ChangeInfoService changeInfoService;
 
     @Bean
     public IndexController indexController() {
@@ -56,5 +55,12 @@ public class ControllerConfig {
     @Bean
     public LogoutController logoutController() {
         return new LogoutController();
+    }
+
+    @Bean
+    public ChangeInfoController changeInfoController() {
+        ChangeInfoController controller = new ChangeInfoController();
+        controller.setChangeInfoService(changeInfoService);
+        return controller;
     }
 }

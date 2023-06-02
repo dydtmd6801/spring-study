@@ -66,7 +66,6 @@ public class MemberDao {
     }
 
     public void update(Member member) {
-        jdbcTemplate.update("update USER set NAME = ?, PHONENUMBER = ? where USERID = ?",member.getName(), member.getPhoneNumber());
-
+        jdbcTemplate.update("update USER set NAME = ?, PHONENUMBER = ? where USERID = ?",member.getName(), member.getPhoneNumber(), member.getUserId());
     }
 }

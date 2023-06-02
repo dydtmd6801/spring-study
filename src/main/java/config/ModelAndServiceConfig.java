@@ -5,10 +5,7 @@ import model.MemberDao;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import service.AuthService;
-import service.BoardService;
-import service.LoginService;
-import service.RegistService;
+import service.*;
 
 @Configuration
 public class ModelAndServiceConfig {
@@ -44,5 +41,10 @@ public class ModelAndServiceConfig {
     @Bean
     public BoardService boardService() {
         return new BoardService(boardDao());
+    }
+
+    @Bean
+    public ChangeInfoService changeInfoService() {
+        return new ChangeInfoService(memberDao());
     }
 }

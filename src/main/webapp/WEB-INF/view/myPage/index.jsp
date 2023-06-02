@@ -21,7 +21,7 @@
 <body>
 <jsp:include page="../../../header.jsp"/>
 
-<form:form action="/myPage?state=modify">
+<form:form modelAttribute="changeInfo" action="/myPage/changeInfo">
     <div class="field">
         <label class="label">ID</label>
         <div class="control">
@@ -35,7 +35,7 @@
             ${authInfo.name}
         </c:if>
         <c:if test="${state eq 'modify'}">
-            <input class="input" type="text" placeholder="Text input">
+            <form:input class="input" path="name" placeholder="New Name" />
         </c:if>
     </div>
 
@@ -45,7 +45,7 @@
             ${authInfo.phoneNumber}
         </c:if>
         <c:if test="${state eq 'modify'}">
-            <input class="input" type="text" placeholder="Text input">
+            <form:input class="input" path="phoneNumber" placeholder="New PhoneNumber"/>
         </c:if>
     </div>
 

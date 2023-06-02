@@ -23,4 +23,9 @@ public class AuthInfo {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    public void setChangeInfo(String newName, String newPhoneNumber) {
+        this.name = newName;
+        this.phoneNumber = newPhoneNumber;
+    }
 }
