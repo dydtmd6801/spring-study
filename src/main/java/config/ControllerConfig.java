@@ -52,4 +52,9 @@ public class ControllerConfig {
     public MyPageController myPageController() {
         return new MyPageController();
     }
+
+    @Bean
+    public LogoutController logoutController() {
+        return new LogoutController();
+    }
 }
