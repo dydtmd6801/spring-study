@@ -56,8 +56,8 @@
 
     <c:if test="${state ne 'modify'}">
         <div class="field is-horizontal is-justify-content-center">
-            <a href="/myPage?state=modify" class="button is-primary">Modify</a>
-            <a href="#" class="button is-light">Log out</a>
+            <a href="/myPage?state=modify" class="button is-primary mt-6 mr-3">Modify</a>
+            <a href="#" class="button is-light mt-6 ml-3">Log out</a>
         </div>
     </c:if>
 
