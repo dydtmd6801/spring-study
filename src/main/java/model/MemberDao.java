@@ -64,4 +64,9 @@ public class MemberDao {
         Number keyValue = keyHolder.getKey();
         member.setId(keyValue.longValue());
     }
+
+    public void update(Member member) {
+        jdbcTemplate.update("update USER set NAME = ?, PHONENUMBER = ? where USERID = ?",member.getName(), member.getPhoneNumber());
+
+    }
 }
