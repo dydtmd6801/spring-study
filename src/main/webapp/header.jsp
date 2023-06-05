@@ -40,7 +40,7 @@
                     </c:if>
                     <c:if test="${!empty authInfo}">
                         <p class="navbar-item"><strong>${authInfo.userId}님</p></strong>
-                        <a class="button is-light" href="/myPage?state=myPage">
+                        <a class="button is-light" href="/myPage">
                             <strong>My Page</strong>
                         </a>
                     </c:if>
