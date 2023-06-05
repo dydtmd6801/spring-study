@@ -36,8 +36,8 @@ public class MemberDao {
                                 rs.getString("PASSWORD"),
                                 rs.getString("NAME"),
                                 rs.getString("NICKNAME"),
-                                rs.getString("EMAIL"),
                                 rs.getString("PHONENUMBER"),
+                                rs.getString("EMAIL"),
                                 rs.getTimestamp("REQTIME").toLocalDateTime());
                         return member;
                     }
