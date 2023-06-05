@@ -61,7 +61,7 @@ public class BoardDao {
                         rs.getString("TITLE"),
                         rs.getString("CONTENT"),
                         rs.getString("WRITER"),
-                        rs.getTimestamp("WRITEDATA").toLocalDateTime()
+                        rs.getTimestamp("WRITEDATE").toLocalDateTime()
                 ),title);
         return result;
     }
