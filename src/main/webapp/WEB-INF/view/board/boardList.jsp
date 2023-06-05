@@ -12,13 +12,6 @@
 <head>
     <title>게시판</title>
     <style>
-        table {
-            width: 80%;
-            margin: 0 auto;
-        }
-        table > tr {
-            text-align: center;
-        }
         table > thead > tr > td:nth-child(1),
         table > thead > tr > td:nth-child(3),
         table > thead > tr > td:nth-child(4) {
@@ -30,17 +23,15 @@
         .content {
             text-align: center;
         }
-        #writeBtn {
-            width: 100%;
-            text-align: right;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
 <jsp:include page="../../../header.jsp"/>
 <div class="content">
     <h2>BOARD LIST</h2>
+</div>
+<div class="is-flex is-justify-content-flex-end">
+    <a class="button is-primary" href="/board/insert">글쓰기</a>
 </div>
 <c:choose>
     <c:when test="${boardList eq 'empty'}">
@@ -70,8 +61,5 @@
         </table>
     </c:otherwise>
 </c:choose>
-<div id="writeBtn">
-    <input type="button" class="button is-primary" onclick="location.href='/board/insert'" value="글쓰기"/>
-</div>
 </body>
 </html>
