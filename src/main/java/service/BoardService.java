@@ -25,4 +25,9 @@ public class BoardService {
     public void insertBoard(Board board) {
         boardDao.BoardInsert(board);
     }
+
+    public Board showDetail(String title) {
+        Board board = boardDao.BoardSearchByTitle(title);
+        return board;
+    }
 }

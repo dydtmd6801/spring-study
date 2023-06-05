@@ -1,12 +1,12 @@
 package controller;
 
 import domain.Board;
-import model.BoardDao;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import service.BoardService;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class BoardController {
     public String showBoard(Board board, Model model) {
         List<Board> result = boardService.BoardList();
         model.addAttribute("boardList", "empty");
-        if(result.size() != 0) {
+        if (result.size() != 0) {
             model.addAttribute("boardList", result);
         }
         return "board/boardList";
@@ -41,5 +41,12 @@ public class BoardController {
     public String insertBoard(Board board) {
         boardService.insertBoard(board);
         return "redirect:/board";
+    }
+
+    @GetMapping("/detail")
+    public String showDetail(@RequestParam String title, Model model) {
+        Board boardDetail = boardService.showDetail(title);
+        model.addAttribute("board", boardDetail);
+        return "board/boardDetail";
     }
 }
