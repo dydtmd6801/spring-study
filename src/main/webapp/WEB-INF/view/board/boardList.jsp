@@ -51,7 +51,7 @@
             <c:forEach items="${boardList}" var="list" varStatus="status">
                 <tr>
                     <td><c:out value="${status.count}"/></td>
-                    <td><a href="/board/detail?title=${list.boardTitle}"><c:out value="${list.boardTitle}"/></a></td>
+                    <td><a href="/board/detail?id=${list.boardId}"><c:out value="${list.boardTitle}"/></a></td>
                     <td><c:out value="${list.boardWriter}"/></td>
                     <fmt:parseDate value="${list.writeDate}" pattern="yyyy-MM-dd" var="parseDate" type="both" />
                     <td><fmt:formatDate value="${parseDate}" pattern="yyyy.MM.dd"/></td>

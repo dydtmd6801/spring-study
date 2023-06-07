@@ -9,7 +9,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class BoardDao {
             @Override
             public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Board board = new Board(
+                        rs.getLong("id"),
                         rs.getString("title"),
                         rs.getString("content"),
                         rs.getString("writer"),
@@ -38,31 +38,30 @@ public class BoardDao {
     }
 
     public void BoardInsert(Board board) {
-        KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
             public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
                 PreparedStatement pstmt = con.prepareStatement("insert into BOARD (title, content, writer, writeDate) " +
-                        "values (?,?,?,?)", new String[]{"id"});
+                        "values (?,?,?,?)");
                 pstmt.setString(1, board.getBoardTitle());
                 pstmt.setString(2, board.getBoardContent());
                 pstmt.setString(3, board.getBoardWriter());
                 pstmt.setString(4, String.valueOf(LocalDateTime.now()));
                 return pstmt;
             }
-        }, keyHolder);
-        Number keyValue = keyHolder.getKey();
-        board.setBoardId(keyValue.longValue());
+        });
     }
 
-    public Board BoardSearchByTitle(String title) {
-        Board result = jdbcTemplate.queryForObject("select * from board where title=?",
+    public Board BoardSearchById(String id) {
+        Board result = jdbcTemplate.queryForObject("select * from board where ID=?",
                 (rs, rowNum) -> new Board(
+                        rs.getLong("ID"),
                         rs.getString("TITLE"),
                         rs.getString("CONTENT"),
                         rs.getString("WRITER"),
                         rs.getTimestamp("WRITEDATE").toLocalDateTime()
-                ),title);
+                ),id);
         return result;
     }
+
 }

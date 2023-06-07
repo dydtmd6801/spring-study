@@ -44,8 +44,8 @@ public class BoardController {
     }
 
     @GetMapping("/detail")
-    public String showDetail(@RequestParam String title, Model model) {
-        Board boardDetail = boardService.showDetail(title);
+    public String showDetail(@RequestParam String id, Model model) {
+        Board boardDetail = boardService.showDetail(id);
         model.addAttribute("board", boardDetail);
         return "board/boardDetail";
     }

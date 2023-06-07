@@ -4,24 +4,25 @@ import java.time.LocalDateTime;
 
 public class Board {
 
-    private long boardId;
+    private Long boardId;
     private String boardTitle;
     private String boardContent;
     private String boardWriter;
     private LocalDateTime writeDate;
 
-    public Board(String boardTitle, String boardContent, String boardWriter, LocalDateTime writeDate) {
+    public Board(Long boardId, String boardTitle, String boardContent, String boardWriter, LocalDateTime writeDate) {
+        this.boardId = boardId;
         this.boardTitle = boardTitle;
         this.boardContent = boardContent;
         this.boardWriter = boardWriter;
         this.writeDate = writeDate;
     }
 
-    public long getBoardId() {
+    public Long getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(long boardId) {
+    public void setBoardId(Long boardId) {
         this.boardId = boardId;
     }
 

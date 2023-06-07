@@ -23,6 +23,7 @@ public class BoardDaoTest {
     @Test
     void insertTest() {
         Board board = new Board(
+                50L,
                 "테스트",
                 "내용 테스트",
                 "ync",
