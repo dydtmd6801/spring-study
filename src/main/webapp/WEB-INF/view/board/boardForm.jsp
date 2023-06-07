@@ -26,7 +26,7 @@
                     <div class="control">
                         <form:input class="input" path="boardTitle" placeholder="Write Subject"/>
                     </div>
-                        <%--                <p class="help is-danger">This field is required</p>--%>
+                    <form:errors path="boardTitle" class="help is-danger"/>
                 </div>
             </div>
         </div>
@@ -53,6 +53,7 @@
                     <div class="control">
                         <form:textarea class="textarea" path="boardContent" placeholder="Write Content"/>
                     </div>
+                    <form:errors path="boardTitle" class="help is-danger"/>
                 </div>
             </div>
         </div>

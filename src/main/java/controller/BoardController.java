@@ -4,11 +4,13 @@ import domain.AuthInfo;
 import domain.Board;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import service.BoardService;
+import validator.BoardValidator;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -45,7 +47,11 @@ public class BoardController {
     }
 
     @PostMapping("/insert")
-    public String insertBoard(Board board, HttpSession session) {
+    public String insertBoard(Board board, HttpSession session, Errors errors) {
+        new BoardValidator().validate(board, errors);
+        if(errors.hasErrors()) {
+            return "board/boardForm";
+        }
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
         board.setBoardWriter(authInfo.getName());
         boardService.insertBoard(board);
