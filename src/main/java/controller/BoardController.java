@@ -1,5 +1,6 @@
 package controller;
 
+import domain.AuthInfo;
 import domain.Board;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import service.BoardService;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -33,12 +35,19 @@ public class BoardController {
     }
 
     @GetMapping("/insert")
-    public String showBoardForm(Board board) {
+    public String showBoardForm(Board board, HttpSession session, Model model) {
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        if(authInfo == null) {
+            return "redirect:/board";
+        }
+        model.addAttribute("authInfo", authInfo);
         return "board/boardForm";
     }
 
     @PostMapping("/insert")
-    public String insertBoard(Board board) {
+    public String insertBoard(Board board, HttpSession session) {
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
+        board.setBoardWriter(authInfo.getName());
         boardService.insertBoard(board);
         return "redirect:/board";
     }
