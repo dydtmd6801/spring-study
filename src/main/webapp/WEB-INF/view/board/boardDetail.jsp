@@ -9,9 +9,28 @@
 <html>
 <head>
     <title>Detail Board</title>
+    <style>
+        .table {
+            width: 80%;
+            height: 60%;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: center;
+        }
+        table > tbody > tr:not(tr:last-child) {
+            height: 20%;
+        }
+        table > tbody > tr:last-child {
+            height: 60%;
+        }
+        table > tbody > tr > td:first-child {
+            width: 10%;
+        }
+    </style>
 </head>
 <body>
-<table>
+<jsp:include page="../../../header.jsp"/>
+<table class="table is-narrow">
     <tr>
         <td>제목</td>
         <td>${board.boardTitle}</td>
