@@ -71,4 +71,10 @@ public class BoardController {
         model.addAttribute("board", editBoard);
         return "/board/boardEditForm";
     }
+
+    @PostMapping("/edit")
+    public String editBoardContent(Board board) {
+        boardService.editBoardContent(board);
+        return "redirect:/board/detail?id=" + board.getBoardId();
+    }
 }

@@ -64,6 +64,7 @@ public class BoardDao {
         return result;
     }
 
-
-
+    public void update(Board board) {
+        jdbcTemplate.update("update Board set CONTENT = ? where ID = ?", board.getBoardContent(), board.getBoardId());
+    }
 }

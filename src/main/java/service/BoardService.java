@@ -30,4 +30,10 @@ public class BoardService {
         Board board = boardDao.BoardSearchById(id);
         return board;
     }
+
+    public void editBoardContent(Board board) {
+        board.setBoardId(board.getBoardId());
+        board.setBoardContent(board.getBoardContent());
+        boardDao.update(board);
+    }
 }

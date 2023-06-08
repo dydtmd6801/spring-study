@@ -57,6 +57,8 @@
             </div>
         </div>
 
+        <form:input path="boardId" value="${board.boardId}" type="hidden"/>
+
         <div class="field is-horizontal is-justify-content-center">
             <button class="button is-primary mr-3" type="submit"><strong>Complete</strong></button>
             <a class="button is-light ml-3" href="/board/detail?id=${board.boardId}">Cancel</a>
