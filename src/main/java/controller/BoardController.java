@@ -66,10 +66,14 @@ public class BoardController {
     }
 
     @GetMapping("/edit")
-    public String showEdit(@RequestParam String id, Board board, Model model) {
+    public String showEdit(@RequestParam String id, Board board, Model model, HttpSession session) {
+        AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
         Board editBoard = boardService.searchBoardById(id);
-        model.addAttribute("board", editBoard);
-        return "/board/boardEditForm";
+        if (authInfo != null && authInfo.getName().equals(editBoard.getBoardWriter())) {
+            model.addAttribute("board", editBoard);
+            return "/board/boardEditForm";
+        }
+        return "redirect:/board/detail?id=" + editBoard.getBoardId();
     }
 
     @PostMapping("/edit")
