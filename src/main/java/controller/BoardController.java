@@ -39,7 +39,7 @@ public class BoardController {
     @GetMapping("/insert")
     public String showBoardForm(Board board, HttpSession session, Model model) {
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
-        if(authInfo == null) {
+        if (authInfo == null) {
             return "redirect:/board";
         }
         model.addAttribute("authInfo", authInfo);
@@ -49,7 +49,7 @@ public class BoardController {
     @PostMapping("/insert")
     public String insertBoard(Board board, HttpSession session, Errors errors) {
         new BoardValidator().validate(board, errors);
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             return "board/boardForm";
         }
         AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo");
@@ -60,8 +60,15 @@ public class BoardController {
 
     @GetMapping("/detail")
     public String showDetail(@RequestParam String id, Model model) {
-        Board boardDetail = boardService.showDetail(id);
+        Board boardDetail = boardService.searchBoardById(id);
         model.addAttribute("board", boardDetail);
         return "board/boardDetail";
+    }
+
+    @GetMapping("/edit")
+    public String showEdit(@RequestParam String id, Board board, Model model) {
+        Board editBoard = boardService.searchBoardById(id);
+        model.addAttribute("board", editBoard);
+        return "/board/boardEditForm";
     }
 }

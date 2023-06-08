@@ -26,7 +26,7 @@ public class BoardService {
         boardDao.BoardInsert(board);
     }
 
-    public Board showDetail(String id) {
+    public Board searchBoardById(String id) {
         Board board = boardDao.BoardSearchById(id);
         return board;
     }
