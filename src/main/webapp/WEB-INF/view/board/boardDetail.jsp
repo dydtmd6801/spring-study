@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: dydtm
@@ -9,40 +11,57 @@
 <html>
 <head>
     <title>Detail Board</title>
-    <style>
-        .table {
-            width: 80%;
-            height: 60%;
-            border: 1px solid black;
-            text-align: center;
-            vertical-align: center;
-        }
-        table > tbody > tr:not(tr:last-child) {
-            height: 20%;
-        }
-        table > tbody > tr:last-child {
-            height: 60%;
-        }
-        table > tbody > tr > td:first-child {
-            width: 10%;
-        }
-    </style>
 </head>
 <body>
 <jsp:include page="../../../header.jsp"/>
-<table class="table is-narrow">
-    <tr>
-        <td>제목</td>
-        <td>${board.boardTitle}</td>
-    </tr>
-    <tr>
-        <td>글쓴이</td>
-        <td>${board.boardWriter}</td>
-    </tr>
-    <tr>
-        <td>내용</td>
-        <td>${board.boardContent}</td>
-    </tr>
-</table>
+<div class="columns">
+    <div class="column"></div>
+    <div class="column is-three-fifths">
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Subject</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <c:out value="${board.boardTitle}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Writer</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <c:out value="${board.boardWriter}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal">
+            <div class="field-label">
+                <label class="label">Content</label>
+            </div>
+            <div class="field-body">
+                <div class="field">
+                    <div class="control">
+                        <c:out value="${board.boardContent}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field is-horizontal is-justify-content-center">
+            <button class="button is-primary mr-3" type="submit"><strong>Edit</strong></button>
+            <a class="button is-light ml-3" href="/board">To List</a>
+        </div>
+    </div>
+    <div class="column"></div>
+</div>
 </body>
 </html>
