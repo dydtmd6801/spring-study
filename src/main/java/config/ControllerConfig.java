@@ -4,6 +4,7 @@ import controller.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.xml.sax.ErrorHandler;
 import service.*;
 
 @Configuration
@@ -62,5 +63,10 @@ public class ControllerConfig {
         ChangeInfoController controller = new ChangeInfoController();
         controller.setChangeInfoService(changeInfoService);
         return controller;
+    }
+
+    @Bean
+    public ErrorController errorController() {
+        return new ErrorController();
     }
 }
